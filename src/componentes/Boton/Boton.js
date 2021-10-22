@@ -1,9 +1,10 @@
-const Boton = ({ texto, onclick, className /* condicionDisabled */ }) => {
+const Boton = ({ texto, type, onclick, className, condicionDisabled }) => {
   return (
     <button
-      type="button"
-      onClick={onclick}
+      type="submit"
+      // onClick={onclick}
       className={className}
+      disabled={!condicionDisabled}
       /*  {condicionDisabled} */
     >
       {texto}
