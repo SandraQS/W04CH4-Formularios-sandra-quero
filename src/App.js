@@ -1,13 +1,11 @@
-import Boton from "./componentes/Boton/Boton";
 import "./App.css";
+import FormDatosPersonales from "./componentes/Boton/FormDatosPersonales/FormDatosPersonales";
 
 function App() {
   return (
-    <Boton
-      texto={"hola"}
-      className={"btn btn-dark"}
-      onclick={() => console.log("holiiss")}
-    />
+    <>
+      <FormDatosPersonales />
+    </>
   );
 }
 
