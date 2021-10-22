@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useContext, useState } from "react";
+// import FormularioContext from "../../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton";
 
 const FormDatosPersonales = () => {
-  // const [completo, setcompleto] = useState(true);
-
+  // const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
   return (
     <>
       <div className="mb-3">

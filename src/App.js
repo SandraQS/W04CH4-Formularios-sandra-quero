@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import FormDatosPersonales from "./componentes/Boton/FormDatosPersonales/FormDatosPersonales";
-import FormularioContext from "./context/FormularioContext";
+import FormularioContext from "./context/FormularioContext/FormularioContext";
 
 function App() {
   const [datosPersonales, setDatosPersonales] = useState({
