@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import FormDatosAceso from "./componentes/FormDatosAceso/FormDatosAceso";
 import FormDatosPersonales from "./componentes/FormDatosPersonales/FormDatosPersonales";
+import FormLoging from "./componentes/FormLoging/FormLoging";
 import FormularioContext from "./context/FormularioContext/FormularioContext";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
         </form>
         <form className="form-datos-personales">
           <FormDatosAceso />
+        </form>
+        <form className="form-datos-personales">
+          <FormLoging />
         </form>
       </FormularioContext.Provider>
       ;
