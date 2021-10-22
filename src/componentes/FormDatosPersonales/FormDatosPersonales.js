@@ -1,41 +1,41 @@
 // import { useContext, useState } from "react";
 // import FormularioContext from "../../../context/FormularioContext/FormularioContext";
-import Boton from "../Boton";
+import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
   // const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
   return (
     <>
       <div className="mb-3">
-        <label htmlFor="nombreUsuario" className="form-label">
+        <label htmlFor="nombre" className="form-label">
           Nombre
         </label>
         <input
           type="text"
           className="form-control"
-          id="nombreUsuario"
+          id="nombre"
           placeholder="Escribe aqui tu nombre"
           required
         />
 
-        <label htmlFor="apellidoUsuario" className="form-label">
+        <label htmlFor="apellido" className="form-label">
           Apellido
         </label>
         <input
           type="text"
           className="form-control"
-          id="apellidoUsuario"
+          id="apellido"
           placeholder="Escribe aqui tu apellido"
           required
         />
 
-        <label htmlFor="cumpleañosUsuario" className="form-label">
+        <label htmlFor="cumpleaños" className="form-label">
           Fecha de cumpleaños
         </label>
         <input
           type="date"
           className="form-control"
-          id="cumpleañosUsuario"
+          id="cumpleaños"
           placeholder="Escribe aqui tu fecha de cumpleaños"
           required
         />
@@ -54,7 +54,7 @@ const FormDatosPersonales = () => {
           type={"submit"}
           texto={"Siguiente"}
           className={"btn btn-dark"}
-          onclick={() => console.log("holiiss")}
+          onclick={() => {}}
           condicionDisabled
         />
       </div>
