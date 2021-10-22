@@ -2,34 +2,38 @@
 // import FormularioContext from "../../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
-const FormDatosAceso = () => {
+const FormLoging = () => {
   // const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
   return (
     <>
       <div className="mb-3">
-        <label htmlFor="nombreUsuario" className="form-label">
+        <label htmlFor="nombreUsuarioAcceso" className="form-label">
           Nombre de usuario
         </label>
         <input
           type="text"
           className="form-control"
-          id="nombreUsuario"
+          id="nombreUsuarioAcceso"
           placeholder="Escribe aqui tu nombre de usuario"
           required
         />
 
-        <label htmlFor="contraseña" className="form-label">
+        <label htmlFor="contraseñAcceso" className="form-label">
           Contraseña
         </label>
-        <input type="password" className="form-control" id="contraseña" />
+        <input
+          type="passwordAcceso"
+          className="form-control"
+          id="contraseñAcceso"
+        />
 
-        <label htmlFor="repite-contraseña" className="form-label">
+        <label htmlFor="repite-contraseñaAcceso" className="form-label">
           Confirma la contraseña
         </label>
         <input
           type="password"
           className="form-control"
-          id="repite-contraseña"
+          id="repite-contraseñaAcceso"
         />
 
         <Boton
@@ -41,7 +45,7 @@ const FormDatosAceso = () => {
         />
         <Boton
           type={"submit"}
-          texto={"Siguiente"}
+          texto={"Aceptar"}
           className={"btn btn-dark"}
           onclick={() => {}}
           condicionDisabled
@@ -51,4 +55,4 @@ const FormDatosAceso = () => {
   );
 };
 
-export default FormDatosAceso;
+export default FormLoging;
