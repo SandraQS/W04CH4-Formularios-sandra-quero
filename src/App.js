@@ -23,7 +23,14 @@ function App() {
 
   return (
     <>
-      <FormularioContext.Provider value={{}}>
+      <FormularioContext.Provider
+        value={{
+          datosPersonales,
+          setDatosPersonales,
+          repetirDatos,
+          setRepetirDatos,
+        }}
+      >
         <form className="form-datos-personales">
           <FormDatosPersonales />
         </form>
