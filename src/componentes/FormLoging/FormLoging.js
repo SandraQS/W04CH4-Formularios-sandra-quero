@@ -3,8 +3,13 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormLoging = () => {
-  const { datosPersonales, repetirDatos, almacenarDatosLogin } =
-    useContext(FormularioContext);
+  const {
+    datosPersonales,
+    repetirDatos,
+    almacenarDatosLogin,
+    siguientePagina,
+    paginaAnterior,
+  } = useContext(FormularioContext);
 
   const clickAceptar = (evento) => {
     evento.preventDefault();
@@ -12,7 +17,7 @@ const FormLoging = () => {
       datosPersonales.contraseña === repetirDatos.contraseñaLogin &&
       datosPersonales.nombreUsuario === repetirDatos.nombreUsuarioLogin
     ) {
-      // console.log("todo bieeen");
+      siguientePagina();
     } else {
       alert("Los datos no coinciden");
     }
@@ -61,7 +66,9 @@ const FormLoging = () => {
             type={"button"}
             texto={"Anterior"}
             className={"btn btn-light"}
-            onclick={() => {}}
+            onclick={(evento) => {
+              paginaAnterior(evento);
+            }}
             condicionDisabled
           />
           <Boton
@@ -69,7 +76,7 @@ const FormLoging = () => {
             texto={"Aceptar"}
             className={"btn btn-dark"}
             onclick={() => {}}
-            condicionDisabled
+            condicionDisabled={repetirDatos.completoRepetido}
           />
         </div>
       </form>
