@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useState } from "react/cjs/react.development";
 import FormularioContext from "../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
@@ -11,15 +12,23 @@ const FormLoging = () => {
     paginaAnterior,
   } = useContext(FormularioContext);
 
+  const [noCoincideContraseña, setNoCoincideContraseña] = useState(false);
+  const [noCoincideUsuario, setNoCoincideUsuario] = useState(false);
+
   const clickAceptar = (evento) => {
     evento.preventDefault();
-    if (
-      datosPersonales.contraseña === repetirDatos.contraseñaLogin &&
-      datosPersonales.nombreUsuario === repetirDatos.nombreUsuarioLogin
+    if (datosPersonales.contraseña !== repetirDatos.contraseñaLogin) {
+      setNoCoincideContraseña(true);
+      return noCoincideContraseña;
+    } else if (
+      datosPersonales.nombreUsuario !== repetirDatos.nombreUsuarioLogin
     ) {
-      siguientePagina();
+      setNoCoincideUsuario(true);
+      return noCoincideUsuario;
     } else {
-      alert("Los datos no coinciden");
+      siguientePagina();
+      setNoCoincideUsuario(false);
+      setNoCoincideContraseña(false);
     }
   };
 
@@ -41,6 +50,11 @@ const FormLoging = () => {
             onChange={(evento) => almacenarDatosLogin(evento)}
             required
           />
+          {noCoincideUsuario ? (
+            <p className="error"> * Este nombre de usuario no existe</p>
+          ) : (
+            ""
+          )}
 
           <label htmlFor="contraseñaLogin" className="form-label">
             Contraseña
@@ -52,6 +66,12 @@ const FormLoging = () => {
             onChange={(evento) => almacenarDatosLogin(evento)}
             required
           />
+          {noCoincideContraseña ? (
+            <p className="error">* La contraseña introducida no es correcta.</p>
+          ) : (
+            ""
+          )}
+
           <div className="form-check">
             <input
               className="form-check-input"

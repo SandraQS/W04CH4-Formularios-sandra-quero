@@ -1,0 +1,13 @@
+.error {
+  color: brown;
+  font-weight: bolder;
+  border-bottom: 2px solid brown;
+  padding: 3px;
+}
+
+.edad {
+  color: rgb(82, 82, 82);
+  font-weight: bolder;
+  border-bottom: 2px solid rgb(82, 82, 82);
+  padding: 3px 10px 3px;
+}

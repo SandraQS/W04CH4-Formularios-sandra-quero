@@ -77,7 +77,6 @@ function App() {
           ? true
           : false,
     });
-    console.log(repetirDatos);
     return repetirDatos;
   };
 
