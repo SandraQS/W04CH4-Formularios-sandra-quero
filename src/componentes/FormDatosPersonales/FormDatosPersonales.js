@@ -3,10 +3,11 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
-  const { almacenarDatosPersonales, datosPersonales } =
+  const { almacenarDatosPersonales, datosPersonales, siguientePagina } =
     useContext(FormularioContext);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
+    siguientePagina();
   };
 
   return (

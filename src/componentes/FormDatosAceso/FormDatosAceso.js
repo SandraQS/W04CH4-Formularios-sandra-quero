@@ -3,12 +3,17 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormDatosAceso = () => {
-  const { almacenarDatosUsuario, datosPersonales } =
-    useContext(FormularioContext);
+  const {
+    almacenarDatosUsuario,
+    datosPersonales,
+    siguientePagina,
+    paginaAnterior,
+  } = useContext(FormularioContext);
+
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     if (datosPersonales.contraseña === datosPersonales.contraseñaRepetida) {
-      // console.log("todo bieeen");
+      siguientePagina();
     } else {
       alert("Las contraseñas no son iguales");
     }
@@ -58,7 +63,9 @@ const FormDatosAceso = () => {
             type={"button"}
             texto={"Anterior"}
             className={"btn btn-light"}
-            onclick={() => {}}
+            onclick={(evento) => {
+              paginaAnterior(evento);
+            }}
             condicionDisabled
           />
           <Boton

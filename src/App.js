@@ -16,18 +16,29 @@ function App() {
     contraseña: "",
     contraseñaRepetida: "",
     completoUsuario: false,
+    formularioAcabado: false,
   });
   const [repetirDatos, setRepetirDatos] = useState({
     nombreUsuarioLogin: "",
     contraseñaLogin: "",
     contraseñaRepetidaLogin: "",
     recordarContraseñaLogin: false,
-    coincidenDatos: false,
     completoRepetido: false,
   });
+  const [pagina, setPagina] = useState(1);
+
+  const siguientePagina = () => {
+    setPagina(pagina + 1);
+    return pagina;
+  };
+
+  const paginaAnterior = (evento) => {
+    evento.preventDefault();
+    setPagina(pagina - 1);
+    return pagina;
+  };
 
   const almacenarDatosPersonales = (evento) => {
-    console.log(evento.target.value);
     setDatosPersonales({
       ...datosPersonales,
       [evento.target.id]: evento.target.value,
@@ -43,7 +54,6 @@ function App() {
   };
 
   const almacenarDatosUsuario = (evento) => {
-    console.log(evento.target.value);
     setDatosPersonales({
       ...datosPersonales,
       [evento.target.id]: evento.target.value,
@@ -58,17 +68,17 @@ function App() {
   };
 
   const almacenarDatosLogin = (evento) => {
-    console.log(evento.target.value);
     setRepetirDatos({
       ...repetirDatos,
       [evento.target.id]: evento.target.value,
       completoRepetido:
-        repetirDatos.contraseñaRepetidaLogin !== "" &&
         repetirDatos.contraseñaLogin !== "" &&
         repetirDatos.nombreUsuarioLogin !== ""
           ? true
           : false,
     });
+    console.log(repetirDatos);
+    return repetirDatos;
   };
 
   return (
@@ -82,13 +92,14 @@ function App() {
           almacenarDatosPersonales,
           almacenarDatosUsuario,
           almacenarDatosLogin,
+          siguientePagina,
+          paginaAnterior,
         }}
       >
-        <FormDatosPersonales />
-        <FormDatosAceso />
-        <FormLoging />
+        {pagina === 1 ? <FormDatosPersonales /> : ""}
+        {pagina === 2 ? <FormDatosAceso /> : ""}
+        {pagina === 3 ? <FormLoging /> : ""}
       </FormularioContext.Provider>
-      ;
     </>
   );
 }
