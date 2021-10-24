@@ -1,55 +1,67 @@
-// import { useContext, useState } from "react";
-// import FormularioContext from "../../../context/FormularioContext/FormularioContext";
+import { useContext } from "react";
+import FormularioContext from "../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
 const FormLoging = () => {
-  // const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
-  const prueba = (evento) => {
+  const { datosPersonales, repetirDatos, almacenarDatosLogin } =
+    useContext(FormularioContext);
+
+  const clickAceptar = (evento) => {
     evento.preventDefault();
-    console.log("holaaaaa");
+    if (
+      datosPersonales.contraseña === repetirDatos.contraseñaLogin &&
+      datosPersonales.nombreUsuario === repetirDatos.nombreUsuarioLogin
+    ) {
+      // console.log("todo bieeen");
+    } else {
+      alert("Los datos no coinciden");
+    }
   };
 
   return (
     <>
       <form
         className="form-datos-personales"
-        onSubmit={(evento) => prueba(evento)}
+        onSubmit={(evento) => clickAceptar(evento)}
       >
         <div className="mb-3">
-          <label htmlFor="nombreUsuarioAcceso" className="form-label">
+          <label htmlFor="nombreUsuarioLogin" className="form-label">
             Nombre de usuario
           </label>
           <input
             type="text"
             className="form-control"
-            id="nombreUsuarioAcceso"
+            id="nombreUsuarioLogin"
             placeholder="Escribe aqui tu nombre de usuario"
+            onChange={(evento) => almacenarDatosLogin(evento)}
             required
           />
 
-          <label htmlFor="contraseñAcceso" className="form-label">
+          <label htmlFor="contraseñaLogin" className="form-label">
             Contraseña
-          </label>
-          <input
-            type="passwordAcceso"
-            className="form-control"
-            id="contraseñAcceso"
-          />
-
-          <label htmlFor="repite-contraseñaAcceso" className="form-label">
-            Confirma la contraseña
           </label>
           <input
             type="password"
             className="form-control"
-            id="repite-contraseñaAcceso"
+            id="contraseñaLogin"
+            onChange={(evento) => almacenarDatosLogin(evento)}
+            required
           />
-
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="recordarContraseña"
+            />
+            <label className="form-check-label" htmlFor="recordarContraseña">
+              Recordar la contraseña
+            </label>
+          </div>
           <Boton
             type={"button"}
             texto={"Anterior"}
             className={"btn btn-light"}
-            onclick={() => console.log("holiiss")}
+            onclick={() => {}}
             condicionDisabled
           />
           <Boton

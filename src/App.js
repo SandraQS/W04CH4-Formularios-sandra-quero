@@ -18,10 +18,11 @@ function App() {
     completoUsuario: false,
   });
   const [repetirDatos, setRepetirDatos] = useState({
-    nombreUsuario: "",
-    contraseña: "",
-    contraseñaRepetida: "",
-    recordarContraseña: false,
+    nombreUsuarioLogin: "",
+    contraseñaLogin: "",
+    contraseñaRepetidaLogin: "",
+    recordarContraseñaLogin: false,
+    coincidenDatos: false,
     completoRepetido: false,
   });
 
@@ -49,11 +50,25 @@ function App() {
       completoUsuario:
         datosPersonales.contraseña !== "" &&
         datosPersonales.contraseñaRepetida !== "" &&
-        datosPersonales.nombreUsuario !== ""
+        datosPersonales.nombreUsuarioLogin !== ""
           ? true
           : false,
     });
-    console.log(datosPersonales);
+    return datosPersonales;
+  };
+
+  const almacenarDatosLogin = (evento) => {
+    console.log(evento.target.value);
+    setRepetirDatos({
+      ...repetirDatos,
+      [evento.target.id]: evento.target.value,
+      completoRepetido:
+        repetirDatos.contraseñaRepetidaLogin !== "" &&
+        repetirDatos.contraseñaLogin !== "" &&
+        repetirDatos.nombreUsuarioLogin !== ""
+          ? true
+          : false,
+    });
   };
 
   return (
@@ -66,6 +81,7 @@ function App() {
           setRepetirDatos,
           almacenarDatosPersonales,
           almacenarDatosUsuario,
+          almacenarDatosLogin,
         }}
       >
         <FormDatosPersonales />

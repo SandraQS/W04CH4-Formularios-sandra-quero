@@ -5,10 +5,10 @@ import Boton from "../Boton/Boton";
 const FormDatosAceso = () => {
   const { almacenarDatosUsuario, datosPersonales } =
     useContext(FormularioContext);
-  const prueba = (evento) => {
+  const clickSiguiente = (evento) => {
     evento.preventDefault();
     if (datosPersonales.contraseña === datosPersonales.contraseñaRepetida) {
-      console.log("todo bieeen");
+      // console.log("todo bieeen");
     } else {
       alert("Las contraseñas no son iguales");
     }
@@ -17,7 +17,7 @@ const FormDatosAceso = () => {
     <>
       <form
         className="form-datos-personales"
-        onSubmit={(evento) => prueba(evento)}
+        onSubmit={(evento) => clickSiguiente(evento)}
       >
         <div className="mb-3">
           <label htmlFor="nombreUsuario" className="form-label">
@@ -58,7 +58,7 @@ const FormDatosAceso = () => {
             type={"button"}
             texto={"Anterior"}
             className={"btn btn-light"}
-            onclick={() => console.log("holiiss")}
+            onclick={() => {}}
             condicionDisabled
           />
           <Boton

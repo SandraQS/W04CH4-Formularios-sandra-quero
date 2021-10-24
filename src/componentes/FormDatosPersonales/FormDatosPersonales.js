@@ -7,7 +7,6 @@ const FormDatosPersonales = () => {
     useContext(FormularioContext);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
-    console.log("holaaaaa");
   };
 
   return (
