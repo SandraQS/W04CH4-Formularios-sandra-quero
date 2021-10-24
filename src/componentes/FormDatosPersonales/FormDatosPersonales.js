@@ -3,10 +3,15 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
-  const { almacenarDatosPersonales, datosPersonales, siguientePagina } =
-    useContext(FormularioContext);
+  const {
+    almacenarDatosPersonales,
+    setDatosPersonales,
+    datosPersonales,
+    siguientePagina,
+  } = useContext(FormularioContext);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
+    setDatosPersonales({ ...datosPersonales, cumpleaños: "" });
     siguientePagina();
   };
 
@@ -52,7 +57,11 @@ const FormDatosPersonales = () => {
             onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
-          {datosPersonales.cumpleaños !== "" ? <p>30 años</p> : ""}
+          {datosPersonales.cumpleaños !== "" ? (
+            <p className="edad">30 años</p>
+          ) : (
+            ""
+          )}
 
           <label htmlFor="email" className="form-label">
             Email address
