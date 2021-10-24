@@ -3,26 +3,11 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
-  const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
+  const { almacenarDatosPersonales, datosPersonales } =
+    useContext(FormularioContext);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     console.log("holaaaaa");
-  };
-
-  const almacenarDatos = (evento) => {
-    console.log(evento.target.value);
-    setDatosPersonales({
-      ...datosPersonales,
-      [evento.target.id]: evento.target.value,
-      completoDatos:
-        datosPersonales.nombre !== "" &&
-        datosPersonales.apellido !== "" &&
-        datosPersonales.cumpleaños !== "" &&
-        datosPersonales.email !== ""
-          ? true
-          : false,
-    });
-    return datosPersonales;
   };
 
   return (
@@ -40,7 +25,7 @@ const FormDatosPersonales = () => {
             className="form-control"
             id="nombre"
             placeholder="Escribe aqui tu nombre"
-            onChange={(evento) => almacenarDatos(evento)}
+            onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
 
@@ -52,7 +37,7 @@ const FormDatosPersonales = () => {
             className="form-control"
             id="apellido"
             placeholder="Escribe aqui tu apellido"
-            onChange={(evento) => almacenarDatos(evento)}
+            onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
 
@@ -64,9 +49,10 @@ const FormDatosPersonales = () => {
             className="form-control"
             id="cumpleaños"
             placeholder="Escribe aqui tu fecha de cumpleaños"
-            onChange={(evento) => almacenarDatos(evento)}
+            onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
+          {datosPersonales.cumpleaños !== "" ? <p>30 años</p> : ""}
 
           <label htmlFor="email" className="form-label">
             Email address
@@ -76,21 +62,17 @@ const FormDatosPersonales = () => {
             className="form-control"
             id="email"
             placeholder="name@ejemplo.com"
-            onChange={(evento) => almacenarDatos(evento)}
+            onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
           <Boton
             type={"submit"}
             texto={"Siguiente"}
             className={"btn btn-dark"}
-            condicionDisabled
+            condicionDisabled={datosPersonales.completoDatos}
           />
         </div>
       </form>
-      <h2>{datosPersonales.nombre}</h2>
-      <h2>{datosPersonales.apellido}</h2>
-      <h2>{datosPersonales.cumpleaños}</h2>
-      <h2>{datosPersonales.email}</h2>
     </>
   );
 };

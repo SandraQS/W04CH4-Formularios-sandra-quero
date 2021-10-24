@@ -25,6 +25,37 @@ function App() {
     completoRepetido: false,
   });
 
+  const almacenarDatosPersonales = (evento) => {
+    console.log(evento.target.value);
+    setDatosPersonales({
+      ...datosPersonales,
+      [evento.target.id]: evento.target.value,
+      completoDatos:
+        datosPersonales.nombre !== "" &&
+        datosPersonales.apellido !== "" &&
+        datosPersonales.cumpleaños !== "" &&
+        datosPersonales.email !== ""
+          ? true
+          : false,
+    });
+    return datosPersonales;
+  };
+
+  const almacenarDatosUsuario = (evento) => {
+    console.log(evento.target.value);
+    setDatosPersonales({
+      ...datosPersonales,
+      [evento.target.id]: evento.target.value,
+      completoUsuario:
+        datosPersonales.contraseña !== "" &&
+        datosPersonales.contraseñaRepetida !== "" &&
+        datosPersonales.nombreUsuario !== ""
+          ? true
+          : false,
+    });
+    console.log(datosPersonales);
+  };
+
   return (
     <>
       <FormularioContext.Provider
@@ -33,6 +64,8 @@ function App() {
           setDatosPersonales,
           repetirDatos,
           setRepetirDatos,
+          almacenarDatosPersonales,
+          almacenarDatosUsuario,
         }}
       >
         <FormDatosPersonales />

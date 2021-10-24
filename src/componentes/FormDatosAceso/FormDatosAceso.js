@@ -1,12 +1,17 @@
-// import { useContext, useState } from "react";
-// import FormularioContext from "../../../context/FormularioContext/FormularioContext";
+import { useContext } from "react";
+import FormularioContext from "../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
 const FormDatosAceso = () => {
-  // const { datosPersonales, setDatosPersonales } = useContext(FormularioContext);
+  const { almacenarDatosUsuario, datosPersonales } =
+    useContext(FormularioContext);
   const prueba = (evento) => {
     evento.preventDefault();
-    console.log("holaaaaa");
+    if (datosPersonales.contraseña === datosPersonales.contraseñaRepetida) {
+      console.log("todo bieeen");
+    } else {
+      alert("Las contraseñas no son iguales");
+    }
   };
   return (
     <>
@@ -23,21 +28,30 @@ const FormDatosAceso = () => {
             className="form-control"
             id="nombreUsuario"
             placeholder="Escribe aqui tu nombre de usuario"
+            onChange={(evento) => almacenarDatosUsuario(evento)}
             required
           />
 
           <label htmlFor="contraseña" className="form-label">
             Contraseña
           </label>
-          <input type="password" className="form-control" id="contraseña" />
+          <input
+            type="password"
+            className="form-control"
+            id="contraseña"
+            onChange={(evento) => almacenarDatosUsuario(evento)}
+            required
+          />
 
-          <label htmlFor="repite-contraseña" className="form-label">
+          <label htmlFor="contraseñaRepetida" className="form-label">
             Confirma la contraseña
           </label>
           <input
             type="password"
             className="form-control"
-            id="repite-contraseña"
+            id="contraseñaRepetida"
+            onChange={(evento) => almacenarDatosUsuario(evento)}
+            required
           />
 
           <Boton
@@ -52,7 +66,7 @@ const FormDatosAceso = () => {
             texto={"Siguiente"}
             className={"btn btn-dark"}
             onclick={() => {}}
-            condicionDisabled
+            condicionDisabled={datosPersonales.completoUsuario}
           />
         </div>
       </form>
