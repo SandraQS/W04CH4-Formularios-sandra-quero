@@ -8,11 +8,11 @@ const FormDatosPersonales = () => {
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     siguientePagina();
-    console.log(datosPersonales.cumpleanyos);
   };
 
   return (
     <>
+      <h2>Datos personales</h2>
       <form
         className="form-datos-personales"
         onSubmit={(evento) => clickSiguiente(evento)}

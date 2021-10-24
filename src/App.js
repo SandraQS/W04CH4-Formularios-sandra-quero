@@ -36,6 +36,13 @@ function App() {
   const paginaAnterior = (evento) => {
     evento.preventDefault();
     setPagina(pagina - 1);
+    setDatosPersonales({
+      ...datosPersonales,
+      completoDatos: false,
+      completoUsuario: false,
+      formularioAcabado: false,
+      cumpleanyos: "",
+    });
     return pagina;
   };
 

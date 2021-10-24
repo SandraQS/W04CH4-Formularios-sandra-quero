@@ -48,7 +48,7 @@ const InfoUsuario = () => {
       <Boton
         type={"button"}
         texto={"Anterior"}
-        className={"btn btn-light"}
+        className={"btn btn-outline-dark"}
         onclick={(evento) => {
           paginaAnterior(evento);
         }}
