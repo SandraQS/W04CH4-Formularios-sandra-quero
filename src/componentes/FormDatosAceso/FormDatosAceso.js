@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useState } from "react/cjs/react.development";
 import FormularioContext from "../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
@@ -9,13 +10,16 @@ const FormDatosAceso = () => {
     siguientePagina,
     paginaAnterior,
   } = useContext(FormularioContext);
-
+  const [contraseñaNoCoincide, setContraseñaNoCoincide] = useState(false);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     if (datosPersonales.contraseña === datosPersonales.contraseñaRepetida) {
       siguientePagina();
+      setContraseñaNoCoincide(false);
+      return contraseñaNoCoincide;
     } else {
-      alert("Las contraseñas no son iguales");
+      setContraseñaNoCoincide(true);
+      return contraseñaNoCoincide;
     }
   };
   return (
@@ -58,6 +62,11 @@ const FormDatosAceso = () => {
             onChange={(evento) => almacenarDatosUsuario(evento)}
             required
           />
+          {contraseñaNoCoincide ? (
+            <p className="error"> * La contraseña no coincide!</p>
+          ) : (
+            ""
+          )}
 
           <Boton
             type={"button"}
