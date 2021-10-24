@@ -11,16 +11,18 @@ function App() {
     apellido: "",
     cumpleaños: "",
     email: "",
+    completoDatos: false,
     nombreUsuario: "",
     contraseña: "",
     contraseñaRepetida: "",
-    completo: false,
+    completoUsuario: false,
   });
   const [repetirDatos, setRepetirDatos] = useState({
     nombreUsuario: "",
     contraseña: "",
     contraseñaRepetida: "",
     recordarContraseña: false,
+    completoRepetido: false,
   });
 
   return (
@@ -33,15 +35,9 @@ function App() {
           setRepetirDatos,
         }}
       >
-        <form className="form-datos-personales">
-          <FormDatosPersonales />
-        </form>
-        <form className="form-datos-personales">
-          <FormDatosAceso />
-        </form>
-        <form className="form-datos-personales">
-          <FormLoging />
-        </form>
+        <FormDatosPersonales />
+        <FormDatosAceso />
+        <FormLoging />
       </FormularioContext.Provider>
       ;
     </>
