@@ -1,10 +1,23 @@
-import { useContext } from "react";
+import { useContext, useMemo, useState } from "react";
 import FormularioContext from "../../context/FormularioContext/FormularioContext";
 import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
   const { almacenarDatosPersonales, datosPersonales, siguientePagina } =
     useContext(FormularioContext);
+
+  const [edadUsuario, setEdadUsuario] = useState(0);
+
+  useMemo(() => {
+    const fecha = new Date();
+    const añoIntroducido = fecha.getFullYear();
+    const fechaIntroducida = datosPersonales.cumpleanyos;
+    const arrayFecha = fechaIntroducida.split("-");
+    setEdadUsuario(añoIntroducido - arrayFecha[0]);
+
+    return edadUsuario;
+  }, [datosPersonales.cumpleanyos, edadUsuario]);
+
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     siguientePagina();
@@ -54,7 +67,7 @@ const FormDatosPersonales = () => {
             required
           />
           {datosPersonales.cumpleanyos !== "" ? (
-            <p className="edad">30 años</p>
+            <p className="edad">{edadUsuario} años</p>
           ) : (
             ""
           )}

@@ -11,6 +11,7 @@ const FormDatosAceso = () => {
     paginaAnterior,
   } = useContext(FormularioContext);
   const [contraseñaNoCoincide, setContraseñaNoCoincide] = useState(false);
+
   const clickSiguiente = (evento) => {
     evento.preventDefault();
     if (datosPersonales.contraseña === datosPersonales.contraseñaRepetida) {
