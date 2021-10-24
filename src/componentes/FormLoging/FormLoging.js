@@ -34,6 +34,7 @@ const FormLoging = () => {
 
   return (
     <>
+      <h2>Login</h2>
       <form
         className="form-datos-personales"
         onSubmit={(evento) => clickAceptar(evento)}
@@ -85,7 +86,7 @@ const FormLoging = () => {
           <Boton
             type={"button"}
             texto={"Anterior"}
-            className={"btn btn-light"}
+            className={"btn btn-outline-dark"}
             onclick={(evento) => {
               paginaAnterior(evento);
             }}

@@ -24,6 +24,7 @@ const FormDatosAceso = () => {
   };
   return (
     <>
+      <h2>Datos de acceso</h2>
       <form
         className="form-datos-personales"
         onSubmit={(evento) => clickSiguiente(evento)}
@@ -71,7 +72,7 @@ const FormDatosAceso = () => {
           <Boton
             type={"button"}
             texto={"Anterior"}
-            className={"btn btn-light"}
+            className={"btn btn-outline-dark"}
             onclick={(evento) => {
               paginaAnterior(evento);
             }}

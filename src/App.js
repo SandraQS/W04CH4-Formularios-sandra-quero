@@ -3,13 +3,14 @@ import "./App.css";
 import FormDatosAceso from "./componentes/FormDatosAceso/FormDatosAceso";
 import FormDatosPersonales from "./componentes/FormDatosPersonales/FormDatosPersonales";
 import FormLoging from "./componentes/FormLoging/FormLoging";
+import InfoUsuario from "./componentes/InfoUsuario/InfoUsuario";
 import FormularioContext from "./context/FormularioContext/FormularioContext";
 
 function App() {
   const [datosPersonales, setDatosPersonales] = useState({
     nombre: "",
     apellido: "",
-    cumpleaños: "",
+    cumpleanyos: "",
     email: "",
     completoDatos: false,
     nombreUsuario: "",
@@ -35,6 +36,13 @@ function App() {
   const paginaAnterior = (evento) => {
     evento.preventDefault();
     setPagina(pagina - 1);
+    setDatosPersonales({
+      ...datosPersonales,
+      completoDatos: false,
+      completoUsuario: false,
+      formularioAcabado: false,
+      cumpleanyos: "",
+    });
     return pagina;
   };
 
@@ -45,7 +53,7 @@ function App() {
       completoDatos:
         datosPersonales.nombre !== "" &&
         datosPersonales.apellido !== "" &&
-        datosPersonales.cumpleaños !== "" &&
+        datosPersonales.cumpleanyos !== "" &&
         datosPersonales.email !== ""
           ? true
           : false,
@@ -93,11 +101,13 @@ function App() {
           almacenarDatosLogin,
           siguientePagina,
           paginaAnterior,
+          setPagina,
         }}
       >
         {pagina === 1 ? <FormDatosPersonales /> : ""}
         {pagina === 2 ? <FormDatosAceso /> : ""}
         {pagina === 3 ? <FormLoging /> : ""}
+        {pagina === 4 ? <InfoUsuario /> : ""}
       </FormularioContext.Provider>
     </>
   );
