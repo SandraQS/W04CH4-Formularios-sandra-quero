@@ -3,16 +3,12 @@ import FormularioContext from "../../context/FormularioContext/FormularioContext
 import Boton from "../Boton/Boton";
 
 const FormDatosPersonales = () => {
-  const {
-    almacenarDatosPersonales,
-    setDatosPersonales,
-    datosPersonales,
-    siguientePagina,
-  } = useContext(FormularioContext);
+  const { almacenarDatosPersonales, datosPersonales, siguientePagina } =
+    useContext(FormularioContext);
   const clickSiguiente = (evento) => {
     evento.preventDefault();
-    setDatosPersonales({ ...datosPersonales, cumpleaños: "" });
     siguientePagina();
+    console.log(datosPersonales.cumpleanyos);
   };
 
   return (
@@ -46,18 +42,18 @@ const FormDatosPersonales = () => {
             required
           />
 
-          <label htmlFor="cumpleaños" className="form-label">
+          <label htmlFor="cumpleanyos" className="form-label">
             Fecha de cumpleaños
           </label>
           <input
             type="date"
             className="form-control"
-            id="cumpleaños"
-            placeholder="Escribe aqui tu fecha de cumpleaños"
+            id="cumpleanyos"
+            placeholder="Escribe aqui tu fecha de cumpleanyos"
             onChange={(evento) => almacenarDatosPersonales(evento)}
             required
           />
-          {datosPersonales.cumpleaños !== "" ? (
+          {datosPersonales.cumpleanyos !== "" ? (
             <p className="edad">30 años</p>
           ) : (
             ""
